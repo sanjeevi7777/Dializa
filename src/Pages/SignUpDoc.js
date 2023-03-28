@@ -3,27 +3,25 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 export default function SignUpDoc() {
-  const [gender, setGender] = useState("");
   const navigate = useNavigate();
-  const [doctorName, setdoctorName] = useState("");
-  const [specialist, setSpecialist] = useState("");
+  const [labName, setLabName] = useState("");
   const [password, setPassword] = useState("");
-  const [phNo, setPhNo] = useState();
-  const [hosId, setHosId] = useState(1);
-  const [docId, setDocId] = useState(1);
-  const [doctors, setDoctors] = useState({});
-  const [hospitals, setHospitals] = useState([]);
-  const [error, setError] = useState();
+  const [labPhNo, setPhNo] = useState();
+  const [labId, setLabId] = useState(1);
+  const [labLocation, setLabLocation] = useState("");
+  const [error, setError] = useState("");
+  const[price,setPrice]=useState();
   async function validateUser(e) {
     e.preventDefault();
-    await axios.post("http://localhost:8080/doctor", {
-      docId: docId,
-      doctorName: doctorName,
-      specialist: specialist,
+    await axios.post("http://localhost:8080/lab", {
+      labId: labId,
+      labName: labName,
+       labLocation:labLocation,
       password: password,
-      gender: gender,
-      phNo: phNo,
-      hosId: hosId,
+      // gender: gender,
+      labPhNo: labPhNo,
+      // hosId: hosId,
+      price:price
     });
     alert("success");
     navigate("/doctor/home");
@@ -32,35 +30,35 @@ export default function SignUpDoc() {
     //     console.log(response.data);
     // })
   }
-  useEffect(() => {
-    axios.get("http://localhost:8080/hospital").then((response) => {
-      setHospitals(response.data);
-      console.log(response.data);
-    });
-  }, []);
-  async function validate(id) {
-    await axios
-      .get(`http://localhost:8080/doctor/${docId}`)
-      .then((response) => {
-        setDoctors(response.data);
-        console.log(doctors);
-      });
-  }
+  // useEffect(() => {
+  //   axios.get("http://localhost:8080/patient").then((response) => {
+  //     setHospitals(response.data);
+  //     console.log(response.data);
+  //   });
+  // }, []);
+  // async function validate(id) {
+  //   await axios
+  //     .get(`http://localhost:8080/doctor/${docId}`)
+  //     .then((response) => {
+  //       setDoctors(response.data);
+  //       console.log(doctors);
+  //     });
+  // }
   return (
     <form>
-      <h3>Docter Sign Up</h3>
+      <h3>Labaratory Sign Up</h3>
 
       <div className="mb-3">
-        <label>Doctor Id</label>
+        <label>Lab Id</label>
         <input
           type="number"
           className="form-control"
           placeholder="Doctor Id"
-          value={docId}
+          value={labId}
           onChange={(e) => {
             // validate(docId);
-            setDocId(e.target.value);
-            console.log(docId);
+            setLabId(e.target.value);
+            console.log(labId);
             // if (doctors.docId != docId) {
             //   setError("User Id is taken");
             // } else {
@@ -71,21 +69,21 @@ export default function SignUpDoc() {
       </div>
       <p>{error}</p>
       <div className="mb-3">
-        <label>Name</label>
+        <label>Lab Name</label>
         <input
           type="text"
           className="form-control"
           placeholder="Name"
-          value={doctorName}
+          value={labName}
           onChange={(e) => {
-            setdoctorName(e.target.value);
-            console.log(doctorName);
+            setLabName(e.target.value);
+            console.log(labName);
           }}
         />
       </div>
 
-      <div className="mb-3">
-        <label>Gender</label>
+      {/* <div className="mb-3">
+        <label></label>
         <input
           type="text"
           className="form-control"
@@ -93,42 +91,21 @@ export default function SignUpDoc() {
           value={gender}
           onChange={(e) => setGender(e.target.value)}
         />
-      </div>
+      </div> */}
       <div className="mb-3">
-        <label>Hospital</label>
-        <select
+        <label>LabLocation</label>
+        <input
           className="form-control"
-          value={hosId}
+          value={labLocation}
+          placeholder="Enter Location"
           onChange={(e) => {
-            setHosId(e.target.value);
-            console.log(hosId);
+            setLabLocation(e.target.value);
+            console.log(labLocation);
           }}
         >
-          {hospitals.map((e) => (
-            <option
-              value={e.hosId}
-              onChange={(e) => {
-                setHosId(e.target.value);
-              }}
-              style={{ color: "black" }}
-            >
-              {e.hosName}
-            </option>
-          ))}
-        </select>
+     
+        </input>
       </div>
-
-      <div className="mb-3">
-        <label>Specialist</label>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Specialist"
-          value={specialist}
-          onChange={(e) => setSpecialist(e.target.value)}
-        />
-      </div>
-
       <div className="mb-3">
         <label>Password</label>
         <input
@@ -140,13 +117,23 @@ export default function SignUpDoc() {
         />
       </div>
       <div className="mb-3">
-        <label>Phone No</label>
+        <label>Lab Phone No</label>
         <input
           type="number"
           className="form-control"
           placeholder="Phone Number"
-          value={phNo}
+          value={labPhNo}
           onChange={(e) => setPhNo(e.target.value)}
+        />
+      </div>
+      <div className="mb-3">
+        <label>Price</label>
+        <input
+          type="number"
+          className="form-control"
+          placeholder="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
         />
       </div>
 

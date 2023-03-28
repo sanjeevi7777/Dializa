@@ -9,7 +9,9 @@ import Login from './Pages/login.component';
 import SignUp from './Pages/signup.component';
 import PatientHome from './Pages/PatientHome';
 import LabHome from './Pages/LabHome';
-
+import LabAbout from './Pages/LabAbout';
+import PatientAbout from'./Pages/PatientAbout';
+import PatientComplaint from './Pages/Complaint.'
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +19,11 @@ function App() {
         <Route path="/" element={<BasicPage/>}></Route>
         <Route path="/lab/signin" element={<LoginDoc/>}></Route>
         <Route path="/lab/signup" element={<SignUpDoc/>}></Route>
+        <Route path="/lab/home" element={<LabHome />}></Route>
+        <Route path="/lab/aboutus" element={<LabAbout />}></Route>
+        <Route path="/patient/home" element={<PatientHome />}></Route>
+        <Route path="/patient/aboutus" element={<PatientAbout />}></Route>
+        <Route path="/patient/complaint" element={<PatientComplaint />}></Route>
         <Route path="/patient/signup" element={<SignUp/>}></Route>
         <Route path="/patient/signin" element={<Login/>}></Route>
         <Route path="/patient/:patId/home" element={<PatientHome/>}></Route>

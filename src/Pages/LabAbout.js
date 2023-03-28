@@ -16,11 +16,8 @@ function About() {
             <div className={Styles.aboutContainerACont}>
               <h1>About us</h1>
               <h5>
-                This app helps to maintain the past medical records(including
-                prescription details, other medical related reports etc.,.).
-                Ensuring the safety with fingerprint check and it allows to view
-                the medical history. It allows the patients to allow access of
-                their medical history from other hospitals to a doctor
+                This app helps you to book an Dialysis center location near by you or
+                Which you want.
               </h5>
             </div>
           </div>

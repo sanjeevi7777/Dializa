@@ -3,14 +3,14 @@ import DoctorNavBar from "../Components/DoctorNavBar";
 function LabHome() {
   return (
     <>
-    {/* <DoctorNavBar/> */}
+    <DoctorNavBar/>
       <div className={Styles.containerHome}>
         <div className={Styles.containerHomeIn}>
           <div className={Styles.containerHomeImg}>
             <img src="https://res.cloudinary.com/dobtf02zs/image/upload/v1679669172/Female-Doctor-Vector-Illustration-removebg-preview_u31csp.png"></img>
           </div>
           <div className={Styles.containerHomeCont}>
-            <h1>Hospitalize</h1>
+            <h1>Dializa</h1>
             <h2>
               We <span>Care</span> for your <span>Health</span>
             </h2>
@@ -42,7 +42,7 @@ function LabHome() {
           <div className={Styles.container3HomeCont}>
             <h1>Get Connected</h1>
             <h4>
-              Book your doctors ,and get Connected with us <br />
+              Book your labs ,and get Connected with us <br />
               We will maintain your daily statistical report
             </h4>
           </div>

@@ -2,49 +2,40 @@ import React, { useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 export default function SignUp()  {
-  const[userName,setUserName]=useState("");
+  const[patId,setPatId]=useState("");
   const[PatientName,setPatientName]=useState("");
   const[password,setPassword]=useState("");
   const[PatientAge,setPatientAge]=useState(0);
   const[sex,setSex]=useState("");
-  const[PatientAddress,setPatientAddress]=useState("");
+  const[patPhNo,setPatPhNo]=useState("");
   const[post,setPost]=useState();
   let navigate=useNavigate();
   async function validateUser(e){
     e.preventDefault();
     navigate('/patient/home');
-    await axios.post("http://192.168.222.57:8080/patient",{
-    userName:userName,
+    await axios.post("http://localhost:8080/patient",{
+    patId:patId,
     patientName:PatientName,
     password:password,
     patientage:PatientAge,
     sex:sex,
-    patientAddress:PatientAddress,
+    patPhNo:patPhNo
     }
     )
     alert("success");
-    setUserName();
+    setPatId();
 setPatientName();
 setPassword();
 setPatientAge();
 setSex();
-setPatientAddress();
+setPatPhNo();
 
 }
     return (
       <form>
         <h3>Patient Sign Up</h3>
 
-        <div className="mb-3">
-          <label>Username</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="User name"
-            value={userName}
-            onChange={(e)=>setUserName(e.target.value)}
-          />
-        </div>
+        
 
         <div className="mb-3">
           <label>Name</label>
@@ -70,13 +61,13 @@ setPatientAddress();
         </div>
 
         <div className="mb-3">
-          <label>Patient Address</label>
+          <label>Patient PhoneNumber</label>
           <input
             type="text"
             className="form-control"
             placeholder="Patient Address"
-            value={PatientAddress}
-            onChange={(e)=>setPatientAddress(e.target.value)}
+            value={patPhNo}
+            onChange={(e)=>setPatPhNo(e.target.value)}
           />
         </div>
 

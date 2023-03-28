@@ -14,7 +14,7 @@ export default function LoginDoc() {
       setlistOfUsers(response.data);
     });
     if (listOfUsers?.password === password) {
-      navigate("/doctor/home");
+      navigate("/lab/home");
     } else {
       alert("Id / Password is Incorrect");
     }

@@ -7,7 +7,7 @@ function Complaint() {
   const [count,setCount]=useState(4);
   const [comp,setComp]=useState("")
   console.log(comp)
-  const [getcomplaints, setGetComplaints] = useState([
+  const [getfeedbacks, setGetFeedbacks] = useState([
     {
       hospitalId: 1,
       complaints: "Long Wait Times. ..."
@@ -21,7 +21,7 @@ function Complaint() {
       complaints: "Lack of Communication and Dismissiveness."
     }
   ])
-  const [postcomplaints, setPostComplaints] = useState('');
+  const [postfeedbacks, setFeedBacks] = useState('');
   return (
     <div>
 
@@ -31,17 +31,17 @@ function Complaint() {
           <div>
 
             <h3>
-              Complaints:
+              FeedBacks:
             </h3>
             <div>
 
-              <textarea name="Complaints" type="text"rows={5} value={comp} onChange={(e)=>{setComp(e.target.value)}} cols={60} style={{textAlign:'center'}}placeholder="Give your Complaints Here"  />
+              <textarea name="Complaints" type="text"rows={5} value={comp} onChange={(e)=>{setFeedBacks(e.target.value)}} cols={60} style={{textAlign:'center'}}placeholder="Give your Complaints Here"  />
             </div>
             <div>
 
               <button className={Style.buttons} onClick={() => {
-                setGetComplaints([{hospitalId:count,complaints:comp},...getcomplaints])
-               } }>Complaint</button>
+                setGetFeedbacks([{hospitalId:count,complaints:comp},...getfeedbacks])
+               } }>Post</button>
             </div>
           </div>
         </div>
@@ -76,12 +76,12 @@ function Complaint() {
          <div>
 
          
-          <h3>OtherComplaints:</h3>
+          <h3>OthersFeedbacks:</h3>
           <div className={Style.complaintBox}>
 
           
           {
-          getcomplaints.map((get,ind)=>
+          getfeedbacks.map((get,ind)=>
           <div>
               <div className={ ind%2 ===0 ? Style.container : Style.darker}>
                 <p className={ind % 2 === 0 ? Style.timeright : Style.timeleft}>{get.complaints}</p>
